@@ -18,13 +18,8 @@ Gem::Specification.new do |spec|
 
   files = %w[README.md] + Dir.glob('lib/**/*.rb')
 
-  if RUBY_ENGINE == 'jruby'
-    spec.platform = 'java'
-    spec.files = files + Dir.glob('lib/**/*.java') + Dir.glob('lib/**/*.jar')
-  else
-    spec.files = files + %w[ext/xorcist/extconf.rb ext/xorcist/xorcist.c]
-    spec.extensions = %w[ext/xorcist/extconf.rb]
-  end
+  spec.platform = 'java'
+  spec.files = files + Dir.glob('lib/**/*.java') + Dir.glob('lib/**/*.jar')
 
   spec.cert_chain  = ["certs/fny.pem"]
   spec.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
